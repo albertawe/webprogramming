@@ -3,7 +3,8 @@
 	<title></title>
 </head>
 <body>
-	<form method="get" action="">
+
+	<form method="get" action="" onsubmit="return validateForm(this);">
 		<div>
 			<label>Nama:</label>
 			<input type="text" name="nama">
@@ -26,24 +27,30 @@
 			$mk = $_GET['mk'];
 			$nilai = $_GET['nilai'];
 			if($nama == "" || $mk == "" || $nilai == ""){
-				$hasil = "Input Data Salah";
+				$hasil = "Semua harus diisi";
 			}
+			elseif(!preg_match("/^[0-9]*$/i", $nilai)) { 
+     		 $hasil = "input nilai salah"; 
+     		}
 			else {
 				if($nilai>=0 && $nilai<=100){
-					if($nilai >= 60){
+					if($nilai >= 60 && $nilai <=100){
 						$hasil = "Lulus";
 					}
-					else
+					else{
 						$hasil = "Tidak Lulus";
+					}
 				}
-				else {
-					$hasil = "Nilai Salah";
+				else{
+					$hasil = "input data salah";
 				}
+			
 			}
 		}
 		if(isset($hasil)){
 			echo "<h1>$hasil</h1>";
 		}
 	?>
+
 </body>
 </html>
