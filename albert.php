@@ -26,27 +26,27 @@
 			$nama = $_GET['nama'];
 			$mk = $_GET['mk'];
 			$nilai = $_GET['nilai'];
-			if($nama == "" || $mk == "" || $nilai == ""){
+				if($nama == "" || $mk == "" || $nilai == ""){
 				$hasil = "Semua harus diisi";
-			}
-			elseif(!preg_match("/^[0-9]*$/i", $nilai)) { 
-     		 $hasil = "input nilai salah"; 
-     		}
-			else {
-				if($nilai>=0 && $nilai<=100){
-					if($nilai >= 60 && $nilai <=100){
+				}
+				elseif(!preg_match("/^[0-9]*$/i", $nilai)) { 
+     	 			$hasil = "input nilai salah"; 
+     				}
+				else {
+					if($nilai>=0 && $nilai<=100){
+						if($nilai >= 60 && $nilai <=100){
 						$hasil = "Lulus";
+						}
+						else{
+							$hasil = "Tidak Lulus";
+						}
 					}
 					else{
-						$hasil = "Tidak Lulus";
-					}
-				}
-				else{
 					$hasil = "input data salah";
-				}
+					}
 			
+				}
 			}
-		}
 		if(isset($hasil)){
 			echo "<h1>$hasil</h1>";
 		}
